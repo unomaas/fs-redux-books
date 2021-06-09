@@ -9,7 +9,12 @@ import * as serviceWorker from './serviceWorker';
 
 
 const bookList = (state = [], action) => {
+  // NO AXIOS CALLS IN REDUX, CAN'T DO ASYNC.
   // TODO - set book list with data from server
+  if (action.type === 'SET_BOOKS') {
+    return action.payload; // Whatever the reducer returns, becomes the new state.
+    // No spread operator because we're not adding something new, on top of keeping the old.
+  }
   return state;
 }
 
